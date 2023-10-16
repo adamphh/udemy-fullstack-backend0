@@ -1,0 +1,22 @@
+1. Được sử dụng để khai báo các biến môi trường cho các môi trường khác nhau (VD: dev, uat, prod...)
+
+2. File .env được để ở ngay thư mục root của project.
+
+3. Khai báo các biến trong file env tương tự như khai báo constant. Tên các biến sẽ viết IN HOA
+
+4. Tất cả các giá trị khai báo trong file env sẽ được convert thành kiểu string
+
+5. Comment: Sử dụng dấu #
+
+6. Để lấy dữ liệu từ các biến trong file env thì: 
+    - Cần cài đặt module: .dotenv
+    - Sau đó lấy qua biến process.env
+    - Muốn dùng .env  thì bắt buộc phải khai báo dòng này: 
+    require('dotenv').config()
+Ex: process.env.POST
+
+*************************
+7. P/s:
+File env chứa nhiều thông tin nhạy cảm (VD: DB server, private key, ...) nên khi muốn public source thì không nên đẩy file .env này lên.
+Thay vào đó hãy  tạo ra 1 file (.env.example) chứa các biến tương tự như file env nhưng không chứa giá trị nhạy cảm 
+- Khi người khác kéo code về thì sẽ tự cấu hình dựa vào file env.example là được.

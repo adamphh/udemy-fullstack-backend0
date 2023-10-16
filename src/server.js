@@ -2,8 +2,14 @@ const express = require('express')  //  commonjs
 //  import express  from 'express' // es modules (can co babel moi chay duoc)
 const path = require('path')
 
+// Muốn dùng .env  thì bắt buộc phải khai báo dòng này
+require('dotenv').config()
+
+console.log(" >>> check env", process.env.HOST_NAME)
+
 const app = express()   // app express
-const port = 8080       // port
+const port = process.env.PORT || 8080       // port
+const host_name = process.env.HOST_NAME || 'localhost'
 
 //  Config template engine 
 // Chi  dinh thu muc se chua cac file template
@@ -31,6 +37,6 @@ app.get('/test-ejs', (req, res) => {
 })
 
 
-app.listen(port, () => {
+app.listen(port, host_name, () => {
     console.log(`Example app listent on port ${port}`)
 })
