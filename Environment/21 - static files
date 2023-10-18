@@ -1,0 +1,30 @@
+*** Cách sử dụng static files đối với nodejs ***
+
+Khi làm dự án thì sẽ có lúc chúng ta muốn sử dụng hình ảnh, file js hoặc file css thì: 
+1. Tạo thư mục có tên là public và để các static files vào trong đó
+./src/public/
+    css: chứa các file css
+    js: chứa các file js (cho việc xử lý trên template (animation,...), không phải xử lý logic như nodejs)
+    images: chứa ảnh, video
+- tạo folder public này để cho phép client có thể đọc được các file trong thư mục này. 
+Những file nằm ngoài thư mục public thì client sẽ không đọc được => tăng tính bảo mật
+
+2. Cấu hình express để xác định thư mục chứa các static files và đọc được chúng
+reference: https://expressjs.com/en/starter/static-files.html
+
+- Thêm cấu hình static file vào file ./src/server.js
+// Config static files
+//const path = require('path')
+app.use(express.static(path.join(__dirname, 'public')))
+
+sau khi config xong thì có thể load files từ thư mục public trực tiếp theo url sau
+    http://localhost:3000/images/kitten.jpg
+    http://localhost:3000/css/style.css
+    http://localhost:3000/js/app.js
+    http://localhost:3000/images/bg.png
+    http://localhost:3000/hello.html
+
+- Vào file ./src/views/sample.ejs và thêm ảnh  vào để kiểm tra
+<img src="/images/blackmore.png" />
+
+

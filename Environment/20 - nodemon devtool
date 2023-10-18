@@ -1,0 +1,36 @@
+*** Cách cấu hình dự án để mỗi lần thay đổi code thì server sẽ tự động cập nhật lại mà không cần phải thoát ra chạy lại server***
+
+1. Sử dụng package có tên là Nodemon
+npm i --save-dev nodemon@2.0.20
+
+2. Nodemon chỉ reload lại server khi nó phát hiện ra là có thay đổi mà thôi. 
+Mặc định thì nó chỉ quan sát các file có đuôi là: .js, .json, .mjs (cấu trúc của ES7), .coffee, .litcoffee
+
+3. Cấu hình lại file package.js để sử dụng nodemon thay cho node
+"scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node --watch server.js",
+    
+    "dev": "nodemon ./src/server.js"
+  },
+Khi chạy npm run dev thì nó  sẽ khởi động server sử dụng nodemon
+
+4. Lưu ý
+Khi chạy lại file .env thì cần phải chạy lại nodemon
+
+5. Dependencies và devDependencies:
+"dependencies": {
+    "dotenv": "16.0.3",
+    "ejs": "3.1.8",
+    "express": "^4.18.2"
+  },
+"devDependencies": {
+    "nodemon": "^2.0.20"
+  }
+
+- Sau khi lên production mode thì chỉ những package nằm trong dependencies mới được cài đặt, còn những 
+package nằm trong devDependencies sẽ không được cài đặt.
+=> Những package nào chỉ dùng khi dev dự án thì nên cài vào devDependencies (npm install --save-dev Ơpackage_name})
+=> Cái này sẽ tối ưu hiệu năng khi lên production
+
+khai báo NODE_ENV=development trong file .env

@@ -16,9 +16,12 @@ const host_name = process.env.HOST_NAME || 'localhost'
 app.set('views', path.join(__dirname, 'views'))
 app.set('view engine', 'ejs')
 
+// Config static files
+app.use(express.static(path.join(__dirname, 'public')))
+
 // Khai bao route
 app.get('/', (req, res) => {
-    res.send('Hello Express')
+    res.send('Hello Express  & using nodemon')
 })
 
 app.get('/abc', (req, res) => {
