@@ -1,0 +1,47 @@
+1. config
+    - Chứa các cấu hình cho dự án
+    VD: Các cấu hình cho view engine, static files sẽ không để  trong file server.js  nữa mà sẽ move vào  trong thư mục config
+    - Khi sử dụng express.join thì nó sẽ lấy đường dẫn từ thư mục mà nó đang đứng => sai đường dẫn. Cần sửa lại  thì mới chạy được
+    có 2 cách sửa:  
+        app.set('views', path.join(__dirname, '../views'))
+    hoặc: 
+        app.use(express.static(path.join('./src', 'public')))
+
+2. controllers
+    Mục đích để tách phần xử lý response trước khi trả về cho client khỏi router. 
+    - Trong vD này sẽ tạo file controllers/homeController để xử lý response cho router homepage: /
+        + trong  file này sẽ khai báo hàm xử lý 
+        + export ra dưới dạng object
+    - Trong file web.js sẽ sử dụng các hàm này để trả về response
+        + import: vì export danng object nen khi import cũng import  dạng object
+
+
+3. middleware
+
+4. migration
+    - Lưu các cấu hình database
+
+5. models
+
+6. public
+
+7 routes
+    - Thông thường khi viết code thì không nên để route ở file server.js như hiện tại. Mà nên gom nhóm theo từng tính năng hoặc chức năng và để trong thư mục routes.
+    - Sử  dụng phương thức express.router để xử lý (chia tách) route. Import router vào để sử dụng
+    https://expressjs.com/en/guide/routing.html
+    - thay vì đùng app.get thì sửa thành router.get là được
+    -  Sau đó thì export router ra để thằng khác dùng lại được
+    module.exports = router;
+    Xem file route/web.js
+    - khai báo route để sử  dụng ở trong file server.js
+    const webRoutes = require('./routes/web');
+    app.use('/v1', webRoutes);
+        + Tham số đầu tiên cho phép thêm đường link ban đầu cho route, nếu không ghi gì thì để là /
+        + Url khi đó sẽ là:  localhost:8081/v1/test-ejs 
+        
+
+8. seeder
+    - Tạo các data fake cho ứng dụng (để test)
+9. services
+
+10. views

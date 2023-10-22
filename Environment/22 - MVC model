@@ -1,0 +1,13 @@
+MVC là viết tắt của Model - View - Controller
+    Giúp code có tổ chức, dễ dàng maintain cũng như mở rộng
+1.  View
+    Là phần hiển thị kết quả mà client nhìn thấy 
+
+2. Controller
+    Là nơi điều hướng dữ liệu: giống như leader trong cty: chia nhỏ công việc, phân chia cho các dev làm
+
+3. Model
+    Là nơi chịu trách nhiệm xử lý dữ liệu (mô phỏng dữ liệu cho các đối tượng, có thể dùng lại), 
+    kết nối database để lưu trữ, sửa đổi, đọc dữ liệu
+
+
