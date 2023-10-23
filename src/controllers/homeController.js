@@ -1,4 +1,5 @@
 const getHomepage = (req, res) => {
+    // Model sẽ được gọi ở đây để  xử lý dữ liệu, ngay trước khi trả về response
     res.send('Hello Express  & using nodemon')
 }
 

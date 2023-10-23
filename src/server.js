@@ -6,6 +6,8 @@ const express = require('express')  //  commonjs
 const viewEngineConfig = require('./config/viewEngineConfig');
 const webRoutes = require('./routes/web');
 
+const mysql = require('mysql2');
+
 console.log(" >>> check env", process.env.HOST_NAME)
 
 const app = express()   // app express
@@ -40,6 +42,24 @@ app.use('/v1', webRoutes)
 
 
 
+// Test connection 
+// create the connection to database
+const connection = mysql.createConnection({
+    host: 'localhost',
+    port: 3307,
+    user: 'root',
+    password: '123456',
+    database: 'hoidanit'
+});
+
+// simple query
+connection.query(
+    'SELECT * FROM `Users` WHERE `id` >= 1',
+    function (err, results, fields) {
+        console.log(" >>>> results = ", results); // results contains rows returned by server
+        console.log(">>> fields =", fields); // fields contains extra meta data about results, if available
+    }
+);
 
 app.listen(port, host_name, () => {
     console.log(`Example app listent on port ${port}`)

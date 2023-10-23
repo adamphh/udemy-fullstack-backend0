@@ -1,0 +1,42 @@
+1. Để connect được nodejs với mysql thì cần cài đặt package mysql2
+    npm install --save-exact mysql2@2.3.3
+    https://www.npmjs.com/package/mysql2
+
+2. Tạo data fake
+    -  Connect vao database su dung dbeaver
+    - Tao table users:
+        CREATE TABLE Users(
+            id int NOT NULL AUTO_INCREMENT PRIMARY KEY,
+            email varchar(255),
+            name varchar(255),
+            city varchar(255)
+        );
+    - Tao du lieu fake  
+        INSERT INTO Users 
+            Values(1, 'adam@gmail.com', 'Pham Hong Hai', 'Ha Noi');
+
+3. Connect Nodejs voi database
+    viet code test trong file server.js. sau nay se tach ra theo mo hinh MVC sau
+
+    - Import mysql2 vao file server.js
+        const mysql = require('mysql2');
+    - Tao connection
+        const connection = mysql.createConnection({
+            host: 'localhost',
+            port: 3307,
+            user: 'root',
+            password: '123456',
+            database: 'hoidanit'
+        });
+    - Query lay du lieu
+        connection.query(
+            'SELECT * FROM `Users` WHERE `id` >= 1',
+            function (err, results, fields) {
+                console.log(" >>>> results = ", results); // results contains rows returned by server
+                console.log(">>> fields =", fields); // fields contains extra meta data about results, if available
+            }
+        );
+    - Xem ket qua trong console log
+
+4. Sau khi test xong thi se  khai bao config db trong file .env
+    

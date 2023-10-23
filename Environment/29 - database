@@ -1,0 +1,25 @@
+1. Sử dụng docker để cài đặt database (mysql)
+    - Tạo database với docker compose
+        + tạo file mysql.yml (D:\Working\study\Udemy-Nodejs\docker)   
+            version: '3.8'
+            services:
+            db-mysql:
+                image: mysql:5.7.40
+                restart: always
+                environment:
+                - MYSQL_DATABASE=hoidanit
+                - MYSQL_ROOT_PASSWORD=123456
+                ports:
+                - "3307:3306"
+        + mở terminal và chuyển vào thư mục chứa file .yml (D:\Working\study\Udemy-Nodejs\docker\mysql.yml)  
+        chạy lệnh sau:
+            docker compose -f mysql.yml -p nodejs-sql up -d
+            - f: tên file yml muốn chạy
+            - p: tên project
+            - d: detach (chạy dưới background: chạy xong câu lệnh thì nó tự động thoát nhưng docker vẫn chạy tiếp)
+
+2. Cài đặt DBeaver để connect đến database (có thể connect đến nhiều database khác nhau)
+    host: localhost
+    port: 3307 (setup trong file mysql.yml)
+    user: root
+    pass: 123456
