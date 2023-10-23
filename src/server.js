@@ -6,7 +6,9 @@ const express = require('express')  //  commonjs
 const viewEngineConfig = require('./config/viewEngineConfig');
 const webRoutes = require('./routes/web');
 
-const mysql = require('mysql2');
+// Da khai bao trong file ./config/database.js
+//const mysql = require('mysql2');
+const connection = require('./config/database');
 
 console.log(" >>> check env", process.env.HOST_NAME)
 
@@ -44,13 +46,13 @@ app.use('/v1', webRoutes)
 
 // Test connection 
 // create the connection to database
-const connection = mysql.createConnection({
-    host: 'localhost',
-    port: 3307,
-    user: 'root',
-    password: '123456',
-    database: 'hoidanit'
-});
+// const connection = mysql.createConnection({
+//     host: 'localhost',
+//     port: 3307,
+//     user: 'root',
+//     password: '123456',
+//     database: 'hoidanit'
+// });
 
 // simple query
 connection.query(

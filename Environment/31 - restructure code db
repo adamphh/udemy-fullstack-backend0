@@ -1,0 +1,19 @@
+1. Khai bao bien config database trong file .env
+    DB_HOST=localhost
+    DB_PORT=3307
+    DB_USER=root
+    DB_PASS=123456
+    DB_NAME=hoidanit
+
+2. Khai bao template trong file .env.example
+    DB_HOST=
+    DB_PORT=
+    DB_USER=
+    DB_PASS=
+    DB_NAME=
+
+3. Chuyen code connect db vao file /config/database.js
+    - bat buoc phai require dotenv neu muon dung
+        require('dotenv').config();
+    - Nho export module de co the goi trong server.js
+        
