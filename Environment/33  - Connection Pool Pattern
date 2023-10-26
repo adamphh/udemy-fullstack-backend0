@@ -1,0 +1,13 @@
+Giải pháp kết nối tới database tối ưu hiệu năng
+https://www.npmjs.com/package/mysql2
+
+1. Using Connection Pools
+- Giúp giảm thiểu thời gian connect đến Mysql Server bằng cách tái sử dụng một connect kết nối trước đó. 
+- Duy trì kết nối thay vì đóng nó lại sau khi đã sử dụng xong. => Giảm thiểu độ trễ của các query vì không cần khởi tạo lại connection => giảm thiểu chi phí
+- Giúp cho ứng dụng không bao giờ bị quá tải. Không bị trình trạng auto start mỗi lần quá tài nguyên.
+2. Sử dụng
+    - Khai báo mysql 
+    - Khởi tạo pool sử dụng hàm createPool thay vì createConnection như bài trước  (xem trong file ./config/database.js)
+    
+
+

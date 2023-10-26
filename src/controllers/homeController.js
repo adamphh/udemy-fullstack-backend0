@@ -1,6 +1,22 @@
+const connection = require('../config/database');
+
 const getHomepage = (req, res) => {
     // Model sẽ được gọi ở đây để  xử lý dữ liệu, ngay trước khi trả về response
-    res.send('Hello Express  & using nodemon')
+    // res.send('Hello Express  & using nodemon')
+
+    // Get data from mysql and display on homepage
+    let users = [];
+
+    connection.query(
+        'Select * from Users u',
+        function (err, results, fields) {
+            users = results;
+            console.log(">>> Result on homepage = ", results);
+
+            res.send(JSON.stringify(users));
+        }
+    )
+
 }
 
 const testPage = (req, res) => {
