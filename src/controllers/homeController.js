@@ -23,11 +23,16 @@ const testPage = (req, res) => {
     res.send('Just for testing multiple routes (/abc) ')
 }
 
+const homePage = (req, res) => {
+    return res.render('home.ejs');
+}
+
 // Nếu export default 1 biến thì gán = luôn
 // module.exports = getHomepage;
 
 // TH muốn export nhiều biến thì cần phải đưa vào trong một object
 module.exports = {
     getHomepage,
-    testPage
+    testPage,
+    homePage
 }

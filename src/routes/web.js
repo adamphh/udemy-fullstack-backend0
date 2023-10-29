@@ -1,6 +1,6 @@
 //  phục vụ cho server side rendering. Web site có những method nào, tính năng nào thì viết vào đây
 const express = require('express');
-const { getHomepage, testPage } = require('../controllers/homeController');
+const { homePage, getHomepage, testPage } = require('../controllers/homeController');
 const { testViewEngine } = require('../controllers/viewEngineController');
 const router = express.Router();
 
@@ -12,7 +12,7 @@ const router = express.Router();
 // router.get('/', (req, res) => {
 //     res.send('Hello Express  & using nodemon')
 // })
-router.get('/', getHomepage);
+router.get('/home', getHomepage);
 
 router.get('/abc', testPage);
 
@@ -27,5 +27,7 @@ router.get('/test-ejs', testViewEngine);
 //     // Khong dung res.send nua ma chuyen sang res.render va truyen ten cua template can render vao
 //     res.render('sample.ejs')
 // })
+
+router.get('/', homePage);
 
 module.exports = router;
