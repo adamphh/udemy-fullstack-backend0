@@ -27,6 +27,11 @@ const homePage = (req, res) => {
     return res.render('home.ejs');
 }
 
+const postCreateUser = (req, res) => {
+    console.log(req.body);
+    res.send('create a new user');
+}
+
 // Nếu export default 1 biến thì gán = luôn
 // module.exports = getHomepage;
 
@@ -34,5 +39,6 @@ const homePage = (req, res) => {
 module.exports = {
     getHomepage,
     testPage,
-    homePage
+    homePage,
+    postCreateUser
 }

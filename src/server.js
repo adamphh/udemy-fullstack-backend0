@@ -19,6 +19,10 @@ const host_name = process.env.HOST_NAME || 'localhost'
 //  Config template engine 
 viewEngineConfig(app);
 
+// Config req.body
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }))
+
 // Khai bao route
 app.use('/v1', webRoutes)
 

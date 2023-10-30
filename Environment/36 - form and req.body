@@ -1,0 +1,17 @@
+1. Tao form trong node js
+    - Khai bao form nhu form trong html binh thuong (xem trong file views/home.ejs)
+        + Khai bao action cho form (la 1 route) 
+        + khai bao method
+    - Khai bao route de xu ly action cua form (xem trong file route/web.js)
+        router.post('/create-user', postCreateUser)
+    - Khai bao controller: postCreateUser trong file  controller/homeController.js
+        
+2. Lay du lieu tu form 
+    - De lay duoc du lieu post len tu form thi can khai bao cac function ma express ho tro san:
+    (xem trong file server.js)
+        app.use(express.json());
+        app.use(express.urlencoded({ extended: true }))
+    - Sau khi khai bao cac function nay thi co the lay duoc du lieu post len tu form thong qua:
+        req.body
+    
+
