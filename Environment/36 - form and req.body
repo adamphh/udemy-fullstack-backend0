@@ -14,4 +14,40 @@
     - Sau khi khai bao cac function nay thi co the lay duoc du lieu post len tu form thong qua:
         req.body
     
+3. Luu data form vao database
 
+4. Sử dụng async ... await thay cho function callback để code tường mình hơn
+- Khi đó khai báo mysql sẽ đổi thành  (config/database.js): 
+    From: 
+        const mysql = require('mysql2');
+    To:
+        const mysql = require('mysql2/promise');
+    
+- function postCreateUser() trong file ./homeController
+    const postCreateUser = (req, res) => {
+        console.log(req.body);
+        let { email, name, city } = req.body;
+        console.log(">>> email", email);
+        connection.query(
+            `INSERT INTO Users (email, name, city) VALUES (?, ?, ?)`,
+            [email, name, city],
+            function (err, results) {
+                console.log(">>> results: ", results);
+                res.send('create user success!');
+            }
+        );
+    }
+
+    To: 
+    const postCreateUser = async (req, res) => {
+        console.log(req.body);
+        let { email, name, city } = req.body;
+        console.log(">>> email", email);
+        
+        let [results, fields] = await connection.query(
+            `INSERT INTO Users (email, name, city) VALUES (?, ?, ?)`,
+            [email, name, city]
+        );
+        console.log(">>>>Check results: ", results);
+        res.send(`Create user success!`);
+    }

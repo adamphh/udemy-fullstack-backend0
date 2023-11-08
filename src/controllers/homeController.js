@@ -27,9 +27,29 @@ const homePage = (req, res) => {
     return res.render('home.ejs');
 }
 
-const postCreateUser = (req, res) => {
+const postCreateUser = async (req, res) => {
     console.log(req.body);
-    res.send('create a new user');
+    let { email, name, city } = req.body;
+    console.log(">>> email", email);
+    // connection.query(
+    //     `INSERT INTO Users (email, name, city) VALUES (?, ?, ?)`,
+    //     [email, name, city],
+    //     function (err, results) {
+    //         console.log(">>> results: ", results);
+    //         res.send('create user success!');
+    //     }
+    // );
+
+    let [results, fields] = await connection.query(
+        `INSERT INTO Users (email, name, city) VALUES (?, ?, ?)`,
+        [email, name, city]
+
+    );
+
+    console.log(">>>>Check results: ", results);
+
+    res.send(`Create user success!`);
+
 }
 
 // Nếu export default 1 biến thì gán = luôn
