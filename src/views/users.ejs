@@ -23,16 +23,47 @@
                         <th>City</th>
                         <th>Action</th>
                     </tr>
-                    <tr>
-                        <td>Id</td>
-                        <td>Email</td>
-                        <td>Name</td>
-                        <td>City</td>
-                        <td>
-                            <button>Edit</button>
-                            <button>Delete</button>
-                        </td>
-                    </tr>
+                    <% users.forEach((user)=> { %>
+                        <tr>
+                            <td>
+                                <%= user.id %>
+                            </td>
+                            <td>
+                                <%= user.email %>
+                            </td>
+                            <td>
+                                <%= user.name %>
+                            </td>
+                            <td>
+                                <%= user.city %>
+                            </td>
+                            <td>
+                                <button>Edit</button>
+                                <button>Delete</button>
+                            </td>
+                        </tr>
+                        <% }) %>
+                            <!-- <% for (let i=0; i < users.length; i++) { %>
+                                <tr>
+                                    <td>
+                                        <%= users[i].id %>
+                                    </td>
+                                    <td>
+                                        <%= users[i].email %>
+                                    </td>
+                                    <td>
+                                        <%= users[i].name %>
+                                    </td>
+                                    <td>
+                                        <%= users[i].city %>
+                                    </td>
+                                    <td>
+                                        <button>Edit</button>
+                                        <button>Delete</button>
+                                    </td>
+                                </tr>
+                                <% } %> -->
+
                 </table>
     </div>
 </body>
