@@ -18,3 +18,5 @@ router.get('/users', usersPage);
 4. Su dung cap dau <%= {ten_bien} %> de in ra gia tri cua bien
     <%= JSON.stringify(users) %>
     <%= users[0]['name'] %>
+
+5. Edit user

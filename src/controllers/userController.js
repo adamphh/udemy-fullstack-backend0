@@ -5,6 +5,11 @@ const usersPage = async (req, res) => {
     return res.render('users.ejs', { users: results });
 }
 
+const getUpdateUserPage = (req, res) => {
+    return res.render('edit.ejs');
+}
+
 module.exports = {
-    usersPage
+    usersPage,
+    getUpdateUserPage
 }

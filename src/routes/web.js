@@ -1,7 +1,7 @@
 //  phục vụ cho server side rendering. Web site có những method nào, tính năng nào thì viết vào đây
 const express = require('express');
 const { homePage, getHomepage, testPage, postCreateUser } = require('../controllers/homeController');
-const { usersPage } = require('../controllers/userController');
+const { usersPage, getUpdateUserPage } = require('../controllers/userController');
 const { testViewEngine } = require('../controllers/viewEngineController');
 const router = express.Router();
 
@@ -33,5 +33,11 @@ router.get('/', homePage);
 
 router.post('/create-user', postCreateUser)
 router.get('/users', usersPage);
+
+// show  edit user form
+router.get('/update/:id', getUpdateUserPage)
+
+// Delete user
+// router.delete('/delete/:id');
 
 module.exports = router;
