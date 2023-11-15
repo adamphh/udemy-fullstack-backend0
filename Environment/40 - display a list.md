@@ -20,3 +20,6 @@ router.get('/users', usersPage);
     <%= users[0]['name'] %>
 
 5. Edit user
+- Lấy thông tin user từ param trên url (update/1)
+    - đổi với method post: req.body
+    - với phương thức get: req.params

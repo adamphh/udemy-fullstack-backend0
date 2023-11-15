@@ -12,7 +12,10 @@
 <body>
 
     <div class="table-container">
-        <h2 class="title">Users list table</h2>
+        <div>
+            <h2 class="title">Users list table</h2>
+            <div><button onclick="window.location.href='/V1/'">Add new user</button></div>
+        </div>
         <%= JSON.stringify(users) %>
             <%= users[0]['name'] %>
                 <table>
@@ -39,7 +42,7 @@
                             </td>
                             <td>
                                 <button onclick="window.location.href='/V1/update/<%= user.id %>'">Edit</button>
-                                <button>Delete</button>
+                                <button onclick="window.location.href='/V1/delete/<%= user.id %>'">Delete</button>
                             </td>
                         </tr>
                         <% }) %>
